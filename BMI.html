@@ -30,7 +30,8 @@
         }
 
         input[type="number"], select {
-            width: 500px; /* Set width to 500px for input and select */
+            width: 100%; /* Full width for better responsiveness */
+            max-width: 500px; /* Max width for larger screens */
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
@@ -38,7 +39,8 @@
         }
 
         button {
-            width: 325px;
+            width: 100%; /* Full width for better responsiveness */
+            max-width: 325px; /* Max width for larger screens */
             padding: 10px;
             background-color: #28a745;
             color: white;
@@ -55,6 +57,12 @@
             margin-top: 20px;
             font-weight: bold;
             text-align: center;
+        }
+
+        section {
+            margin: 20px 0; /* Consistent vertical margin */
+            padding: 15px; /* Padding for inner spacing */
+            border-radius: 5px; /* Rounded corners */
         }
 
         .full-width {
@@ -80,8 +88,8 @@
         <div class="grid">
             <section>
                 <h2>BMI Calculator</h2>
-                <h2 style="font-size: 20px; font-weight: bold; color: rgb(89, 120, 223);" >
-                    " It's not about being skinny, it's about being healthy."
+                <h2 style="font-size: 20px; font-weight: bold; color: rgb(89, 120, 223);">
+                    "It's not about being skinny, it's about being healthy."
                 </h2>
 
                 <form id="bmiForm">
@@ -123,6 +131,7 @@
                 </p>
                 <img src="https://cdn.discordapp.com/attachments/1022167932589068290/1299407174799331400/bmi2.png?ex=671d16bc&is=671bc53c&hm=c0cd96fe8afcf2b703e2d33fe05495c18b6e114e08f1088b193687ab4d2b2707&" alt="BMI count ">
             </section>
+
             <section>
                 <p>
                     This is the World Health Organization's (WHO) recommended body weight based on BMI values for adults. It is used for both men and women,
@@ -130,13 +139,14 @@
                 <h2>
                     age 20 or older.
                 </h2>
-                <img src="gambar\20year.png" alt="BMI 20older ">
+                <img src="gambar/20year.png" alt="BMI 20older ">
+                <p></p>
+                <p></p>
                 <p>
                     Meanwhile, the Centers for Disease Control and Prevention (CDC) recommends the following BMI categorization data for children and teens:
                 </p>
-                <h2>  age 2 until 20 </h2>
-                <img src="gambar\before20.png" alt="BMI under20 ">
-
+                <h2>age 2 until 20</h2>
+                <img src="gambar/before20.png" alt="BMI under20 ">
             </section>
         </div>
     </main>
