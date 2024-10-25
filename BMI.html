@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifestyle Theme</title>
+    <link rel="stylesheet" href="./pico.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"], select {
+            width: 500px; /* Set width to 500px for input and select */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 500px;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="container-fluid">
+        <ul>
+            <li><strong>Self Care Vibes</strong></li>
+        </ul>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#" role="button">Subscribe</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="grid">
+            <section>
+                <h2>BMI Calculator</h2>
+                <h2 style="font-size: 20px; font-weight: bold; color: rgb(89, 120, 223);" >
+                    " Choose good health, low cholesterol, and dental insurance. - Trainspotting (1996)"
+                </h2>
+
+                <form id="bmiForm">
+                    <label for="age">Umur (tahun):</label>
+                    <input type="number" id="age" required>
+
+                    <label for="gender">Gender:</label>
+                    <select id="gender" required>
+                        <option value="male">Laki-laki</option>
+                        <option value="female">Perempuan</option>
+                    </select>
+
+                    <label for="weight">Berat Badan (kg):</label>
+                    <input type="number" id="weight" required>
+
+                    <label for="height">Tinggi Badan (cm):</label>
+                    <input type="number" id="height" required>
+
+                    <button type="submit">Hitung BMI</button>
+                </form>
+
+                <div id="result" class="result"></div>
+            </section>
+        </div>
+    </main>
+
+    <section aria-label="Subscribe example">
+        <div class="container">
+            <article>
+                <hgroup>
+                    <h2>Join Our Discord Community</h2>
+                    <h3>Subscribe to join our Community</h3>
+                </hgroup>
+                <form class="grid">
+                    <input type="text" id="firstname" name="firstname" placeholder="First Name" aria-label="First Name" required>
+                    <input type="email" id="email" name="email" placeholder="Email" aria-label="Email" required>
+                    <button type="submit" onclick="event.preventDefault()">
+                        Subscribe
+                    </button>
+                </form>
+            </article>
+        </div>
+    </section>
+
+    <footer class="container">
+        <small><a href="#">Privacy Policy</a> •
+            <a href="#">Terms &amp; Conditions</a></small>
+    </footer>
+
+    <script>
+        document.getElementById('bmiForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+    
+            const age = parseInt(document.getElementById('age').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value) / 100; // convert cm to m
+    
+            const bmi = weight / (height * height);
+            let classification = '';
+    
+            if (age >= 20) {
+                // Klasifikasi untuk umur 20 tahun ke atas
+                if (bmi < 16) classification = 'Underweight (severe)';
+                else if (bmi < 17) classification = 'Underweight (moderate)';
+                else if (bmi < 18.5) classification = 'Underweight (mild)';
+                else if (bmi < 25) classification = 'Normal';
+                else if (bmi < 30) classification = 'Overweight';
+                else if (bmi < 35) classification = 'Obese Class I';
+                else if (bmi < 40) classification = 'Obese Class II';
+                else classification = 'Obese Class III';
+            } else {
+                // Klasifikasi untuk umur di bawah 20 tahun
+                const percentile = (bmi / 25) * 100; // Menghitung persentil berdasarkan asumsi BMI 25
+                if (percentile < 5) classification = 'Underweight';
+                else if (percentile < 85) classification = 'Healthy weight';
+                else if (percentile < 95) classification = 'At risk of overweight';
+                else classification = 'Overweight';
+            }
+    
+            document.getElementById('result').innerText = `BMI Anda: ${bmi.toFixed(2)} - Klasifikasi: ${classification}`;
+        });
+    </script>
+    
+</body>
+</html>
